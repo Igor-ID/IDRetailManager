@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDRMDataManager", "IDRMDataManager\IDRMDataManager.csproj", "{73C78C5B-FDF7-49A5-8D1C-61F89FD08D54}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IDRMData", "IDRMData\IDRMData.sqlproj", "{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDRMDesktopUI", "IDRMDesktopUI\IDRMDesktopUI.csproj", "{5C71F016-59F8-4EB2-BB4F-3E96618296D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{73C78C5B-FDF7-49A5-8D1C-61F89FD08D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73C78C5B-FDF7-49A5-8D1C-61F89FD08D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73C78C5B-FDF7-49A5-8D1C-61F89FD08D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50722E90-9BC6-4A94-82BF-3BDC2FDC8E77}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
