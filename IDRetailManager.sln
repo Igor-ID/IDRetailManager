@@ -9,6 +9,10 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IDRMData", "IDRMData\IDRMDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDRMDesktopUI", "IDRMDesktopUI\IDRMDesktopUI.csproj", "{5C71F016-59F8-4EB2-BB4F-3E96618296D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDRMDataManagerLibrary", "IDRMDataManagerLibrary\IDRMDataManagerLibrary.csproj", "{12E6506D-EF4A-474E-A912-BA932D1A3D71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDRMDesktopUILibrary", "IDRMDesktopUILibrary\IDRMDesktopUILibrary.csproj", "{C9B4A337-D5A7-4568-BCAD-1429E0400EB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C71F016-59F8-4EB2-BB4F-3E96618296D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E6506D-EF4A-474E-A912-BA932D1A3D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E6506D-EF4A-474E-A912-BA932D1A3D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E6506D-EF4A-474E-A912-BA932D1A3D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E6506D-EF4A-474E-A912-BA932D1A3D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B4A337-D5A7-4568-BCAD-1429E0400EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B4A337-D5A7-4568-BCAD-1429E0400EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B4A337-D5A7-4568-BCAD-1429E0400EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B4A337-D5A7-4568-BCAD-1429E0400EB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

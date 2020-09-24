@@ -1,6 +1,8 @@
 ﻿using Caliburn.Micro;
 using IDRMDesktopUI.Helpers;
 using IDRMDesktopUI.ViewModels;
+using IDRMDesktopUILibrary.API;
+using IDRMDesktopUILibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace IDRMDesktopUI
 
             _container.Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes().Where(type => type.IsClass).Where(type => type.Name.EndsWith("ViewModel")).ToList()

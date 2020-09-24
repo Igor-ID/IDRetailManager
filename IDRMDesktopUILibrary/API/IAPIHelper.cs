@@ -1,10 +1,11 @@
 ﻿using IDRMDesktopUI.Models;
 using System.Threading.Tasks;
 
-namespace IDRMDesktopUI.Helpers
+namespace IDRMDesktopUILibrary.API
 {
     public interface IAPIHelper
     {
         Task<AuthenticatedUser> Authenticate(string username, string password);
+        Task GetLoggedInUserInfo(string token);
     }
 }
