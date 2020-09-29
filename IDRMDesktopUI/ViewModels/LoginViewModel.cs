@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using IDRMDesktopUI.EventModels;
 using IDRMDesktopUI.Helpers;
 using IDRMDesktopUILibrary.API;
 using System;
@@ -13,9 +14,11 @@ namespace IDRMDesktopUI.ViewModels
     public class LoginViewModel : Screen
     {
         private IAPIHelper _apiHelper;
-        public LoginViewModel(IAPIHelper apiHelper)
+        private IEventAggregator _events;
+        public LoginViewModel(IAPIHelper apiHelper, IEventAggregator events)
         {
             _apiHelper = apiHelper;
+            _events = events;
         }
         
         private string _userName;
@@ -98,6 +101,8 @@ namespace IDRMDesktopUI.ViewModels
 
                 //Capture more info about the user
                 await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
+
+                _events.PublishOnUIThread(new LogOnEvent());
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using IDRMDesktopUI.EventModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,29 @@ using System.Threading.Tasks;
 
 namespace IDRMDesktopUI.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
-    {
-        private LoginViewModel _loginVM;
-        public ShellViewModel(LoginViewModel loginVM)
+    public class ShellViewModel : Conductor<object>, IHandle<LogOnEvent>
+    {        
+        private IEventAggregator _events;
+        private SalesViewModel _salesVM;
+        private SimpleContainer _container;
+
+        // All ViewModels and Views that was included to constructor to provide and implement Dependency Injection
+        // are stored for a long term. E.g. we don't need Login ViewModel stored for a long term
+        // in that case we removed it from the constructor and placed inside the ActivateItem
+        // Now with ActivateItem when we activate it we get the clean ViewModel every time as new instance per request, 
+        // and when deactivate the LoginViewModel will go away.
+        public ShellViewModel(IEventAggregator events, SalesViewModel salesVM, SimpleContainer container)
         {
-            _loginVM = loginVM;
-            ActivateItem(_loginVM);
+            _events = events;
+            _salesVM = salesVM;
+            _container = container;
+            _events.Subscribe(this);            
+            ActivateItem(_container.GetInstance<LoginViewModel>());
         }
+
+        public void Handle(LogOnEvent message)
+        {
+            ActivateItem(_salesVM);
+        }        
     }
 }
