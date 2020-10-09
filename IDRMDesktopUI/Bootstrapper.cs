@@ -2,6 +2,7 @@
 using IDRMDesktopUI.Helpers;
 using IDRMDesktopUI.ViewModels;
 using IDRMDesktopUILibrary.API;
+using IDRMDesktopUILibrary.Helpers;
 using IDRMDesktopUILibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace IDRMDesktopUI
             _container.Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
+                .Singleton<IConfigHelper, ConfigHelper>()
                 .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes().Where(type => type.IsClass).Where(type => type.Name.EndsWith("ViewModel")).ToList()
