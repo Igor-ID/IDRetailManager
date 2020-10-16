@@ -12,20 +12,18 @@ namespace IDRMDesktopUI.ViewModels
     {        
         private IEventAggregator _events;
         private SalesViewModel _salesVM;
-        private SimpleContainer _container;
 
         // All ViewModels and Views that was included to constructor to provide and implement Dependency Injection
         // are stored for a long term. E.g. we don't need Login ViewModel stored for a long term
         // in that case we removed it from the constructor and placed inside the ActivateItem
         // Now with ActivateItem when we activate it we get the clean ViewModel every time as new instance per request, 
         // and when deactivate the LoginViewModel will go away.
-        public ShellViewModel(IEventAggregator events, SalesViewModel salesVM, SimpleContainer container)
+        public ShellViewModel(IEventAggregator events, SalesViewModel salesVM)
         {
             _events = events;
-            _salesVM = salesVM;
-            _container = container;
+            _salesVM = salesVM;            
             _events.Subscribe(this);            
-            ActivateItem(_container.GetInstance<LoginViewModel>());
+            ActivateItem(IoC.Get<LoginViewModel>());
         }
 
         public void Handle(LogOnEvent message)
