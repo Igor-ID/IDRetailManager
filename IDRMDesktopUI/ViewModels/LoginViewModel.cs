@@ -21,7 +21,7 @@ namespace IDRMDesktopUI.ViewModels
             _events = events;
         }
         
-        private string _userName;
+        private string _userName = "id@dedkov.com";
 
         public string UserName
         {
@@ -34,7 +34,7 @@ namespace IDRMDesktopUI.ViewModels
             }
         }
 
-        private string _password;
+        private string _password = "Igor1569853!";
 
         public string Password
         {

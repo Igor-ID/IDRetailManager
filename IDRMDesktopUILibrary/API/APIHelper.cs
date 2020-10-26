@@ -15,7 +15,7 @@ namespace IDRMDesktopUILibrary.API
     public class APIHelper : IAPIHelper
     {
         
-        private readonly ILoggedInUserModel _loggedInUser;
+        private ILoggedInUserModel _loggedInUser;
 
         public APIHelper(ILoggedInUserModel loggedInUser)
         {

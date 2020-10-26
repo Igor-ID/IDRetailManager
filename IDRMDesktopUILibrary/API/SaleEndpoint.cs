@@ -8,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace IDRMDesktopUILibrary.API
 {
-    public class ProductEndpoint : IProductEndpoint
+    public class SaleEndpoint : ISaleEndpoint
     {
         private IAPIHelper _apiHelper;
 
-        public ProductEndpoint(IAPIHelper apiHelper)
+        public SaleEndpoint(IAPIHelper apiHelper)
         {
             _apiHelper = apiHelper;
         }
 
-        public async Task<List<ProductModel>> GetAll()
+        public async Task PostSale(SaleModel sale)
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Product"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/Sale", sale))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<List<ProductModel>>();
-                    return result;
+                    // Log successful cal
                 }
                 else
                 {

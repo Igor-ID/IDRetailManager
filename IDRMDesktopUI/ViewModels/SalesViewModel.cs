@@ -15,11 +15,13 @@ namespace IDRMDesktopUI.ViewModels
     {
         private IProductEndpoint _productEndpoint;
         private IConfigHelper _confighelper;
+        private ISaleEndpoint _saleEndpoint;
 
-        public SalesViewModel(IProductEndpoint productEndpoint, IConfigHelper confighelper)
+        public SalesViewModel(IProductEndpoint productEndpoint, IConfigHelper confighelper, ISaleEndpoint saleEndpoint)
         {
             _productEndpoint = productEndpoint;
             _confighelper = confighelper;
+            _saleEndpoint = saleEndpoint;
         }
 
         protected override async void OnViewLoaded(object view)
@@ -141,6 +143,8 @@ namespace IDRMDesktopUI.ViewModels
             }
         }
 
+        // Caliburn.Micro convention Name and Can{Name} wires up NotifyOfPropertyChange to the button and fire button up 
+        // if return type of property or method is boolean and it is true
         public bool CanAddToCart
         {
             get
@@ -164,6 +168,7 @@ namespace IDRMDesktopUI.ViewModels
             if (existingItem != null)
             {
                 existingItem.QuantityInCart += ItemQuantity;
+                // HACK - There should be a better way of refreshing the cart display
                 Cart.Remove(existingItem);
                 Cart.Add(existingItem);
             }
@@ -182,6 +187,7 @@ namespace IDRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanRemoveFromCart
@@ -201,6 +207,7 @@ namespace IDRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanCheckOut
@@ -210,14 +217,29 @@ namespace IDRMDesktopUI.ViewModels
                 bool output = false;
 
                 // Make sure there is something in the cart
+                if (Cart.Count > 0)
+                {
+                    output = true;
+                }
 
                 return output;
             }
         }
 
-        public void CheckOut()
+        public async Task CheckOut()
         {
+            SaleModel sale = new SaleModel();
 
+            foreach (var item in Cart)
+            {
+                sale.SaleDetails.Add(new SaleDetailModel
+                {
+                    ProductId = item.Product.Id,
+                    Quantity = item.QuantityInCart
+                });
+            }
+
+            await _saleEndpoint.PostSale(sale);
         }
 
     }
