@@ -44,6 +44,11 @@ namespace IDRMDataManagerLibrary.DataAccess
 
                 detail.PurchasePrice = productInfo.RetailPrice * detail.Quantity;
 
+                if (productInfo.IsTaxable)
+                {
+                    detail.Tax = detail.PurchasePrice * taxRate;
+                }
+
                 details.Add(detail);
             }
 
