@@ -24,6 +24,7 @@ namespace IDRMDataManagerLibrary.DataAccess
             // Start filling in the models we will save to the database
             List<SaleDetailDBModel> details = new List<SaleDetailDBModel>();
             ProductData products = new ProductData();
+            var taxRate = ConfigHelper.GetTaxRate();
 
             foreach (var item in sale.SaleDetails)
             {
