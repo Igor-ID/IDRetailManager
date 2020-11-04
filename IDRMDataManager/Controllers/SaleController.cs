@@ -1,4 +1,6 @@
-﻿using IDRMDataManagerLibrary.Models;
+﻿using IDRMDataManagerLibrary.DataAccess;
+using IDRMDataManagerLibrary.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace IDRMDataManager.Controllers
     {
         public void Post(SaleModel sale)
         {
-            Console.WriteLine();
+            SaleData data = new SaleData();
+            string userId = RequestContext.Principal.Identity.GetUserId();
+
+            data.SaveSale(sale, userId);
         }
         
     }
