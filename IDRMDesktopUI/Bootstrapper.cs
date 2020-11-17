@@ -1,5 +1,7 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
 using IDRMDesktopUI.Helpers;
+using IDRMDesktopUI.Models;
 using IDRMDesktopUI.ViewModels;
 using IDRMDesktopUILibrary.API;
 using IDRMDesktopUILibrary.Helpers;
@@ -27,6 +29,16 @@ namespace IDRMDesktopUI
 
         protected override void Configure()
         {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ProductModel, ProductDisplayModel>();
+                cfg.CreateMap<CartItemModel, CartItemDisplayModel>();
+            });
+
+            var mapper = config.CreateMapper();
+
+            _container.Instance(mapper);
+            
             _container.Instance(_container)
                 .PerRequest<IProductEndpoint, ProductEndpoint>()
                 .PerRequest<ISaleEndpoint, SaleEndpoint>();
