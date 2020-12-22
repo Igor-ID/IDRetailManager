@@ -85,17 +85,15 @@ namespace IDRMDataManagerLibrary.DataAccess
                     sql.RollBackTransaction();
                     throw;
                 }
-            }     
-
-            //public List<ProductModel> GetProducts()
-            //{
-            //    SqlDataAccess sql = new SqlDataAccess();
-
-            //    var output = sql.LoadData<ProductModel, dynamic>("dbo.spProduct_GetAll", new { }, "IDRMData");
-
-            //    return output;
-            //}
-
+            }
         }
+
+        public List<SaleReportModel> GetSaleReport()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var output = sql.LoadData<SaleReportModel, dynamic>("dbo.spSale_SaleReport", new { }, "IDRMData");
+            return output;
+        }
+
     }
 }
